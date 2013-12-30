@@ -26,10 +26,11 @@ cp /usr/local/tiledrawer/nginx/status.html /usr/local/tiledrawer/progress/index.
 date +'%a %b %d %H:%M:%S %Z %Y Installing software (setup.sh)' >> /usr/local/tiledrawer/progress/status.txt
 
 apt-get -y update
-apt-get -y upgrade <<EOF
-k
-\r
-EOF
+# grub-pc must be on hold (at least for Ubuntu 11.10),
+# because it may cause the script to block in a configuration dialog
+apt-mark hold grub-pc
+apt-get -y upgrade
+
 apt-get -y install zip unzip gunicorn memcached gdal-bin python-mapnik \
                    python-pip python-imaging python-gevent python-memcache \
                    osm2pgsql postgresql-9.1-postgis openjdk-6-jre-headless \
