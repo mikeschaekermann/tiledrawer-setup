@@ -27,7 +27,8 @@ date +'%a %b %d %H:%M:%S %Z %Y Installing software (setup.sh)' >> /usr/local/til
 
 apt-get -y update
 apt-get -y upgrade <<EOF
-2
+k
+\r
 EOF
 apt-get -y install zip unzip gunicorn memcached gdal-bin python-mapnik \
                    python-pip python-imaging python-gevent python-memcache \
@@ -39,7 +40,10 @@ apt-get -y install zip unzip gunicorn memcached gdal-bin python-mapnik \
 ln -s /usr/lib/postgresql/9.1/bin/shp2pgsql /usr/bin/shp2pgsql # really?
 ln -s /usr/lib/postgresql/9.1/bin/pgsql2shp /usr/bin/pgsql2shp # seriously?
 
-sudo aptitude install python-cssutils
+sudo aptitude install python-cssutils <<EOF
+Y
+\r
+EOF
 pip install TileStache ModestMaps Cascadenik shapely imposm.parser imposm
 
 # recent osmosis will have to be done manually,
